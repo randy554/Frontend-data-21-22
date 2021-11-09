@@ -11,51 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://d3js.org/d3.v7.js" charset="utf-8" defer></script>
     <script src="/js/index.js" defer></script>
     <title>Frontend data - D3.js</title>
   </head>
   <body>
     <h1>D3.js</h1>
-    <!-- width & height determine the SVG playground the elements within) -->
-    <svg width="960" height="500">
-      <!-- r is voor de radius van de cirkel -->
-      <!-- cx is voor x-as links naar rechts -->
-      <!-- cy is voor y-as boven naar beneden -->
-      <circle cx="400" cy="200" r="80"></circle>
-
-      <!-- Rectangle svg element -->
-      <rect x="330" y="50" width="150" height="60" />
-      <!-- Rectangle svg element with color -->
-      <rect x="330" y="300" width="150" height="60" fill="red" />
-
-      <!-- The group element allows you to apply things to all elements within the svg element -->
-      <!-- The transform attribute with translate function allows you to move the whole group relatively -->
-      <!-- Fill colors the whole group -->
-      <!-- The stroke attribute gives elements a stroke, u can thicken the stroke with the stroke-width attribute -->
-      <g transform="translate(170, 0)" fill="green" stroke="red">
-        <rect x="330" y="50" width="150" height="60" />
-        <circle cx="400" cy="200" r="80"></circle>
-        <rect
-          x="330"
-          y="300"
-          width="150"
-          height="60"
-          fill="green"
-          stroke-width="5"
-        />
-      </g>
-      <!-- A class to style element(s)  -->
-      <g class="line">
-        <!-- With SVG u can create lines aswell. U have access to the same x & y attributes as with other shapes. -->
-        <!-- The difference is u have a starting x & an ending x attribute that u can set like this: x1="250" x2="150"  -->
-        <line x1="250" x2="150" y1="250" y2="350"></line>
-        <!-- Paths allows to connect multiple lines together -->
-        <!-- The M witin the 'd attribute' allows u to move a element, in this case our line element above. -->
-        <!-- The M250 350 links to the y1="250" y2="350" of the line element -->
-        <!-- The L stand for line to (where we want to draw the line to). -->
-        <!-- The difference between line and path elements is that -->
-        <path d="M150 350 L600 700"></path>
-      </g>
-    </svg>
   </body>
 </html>
