@@ -27,6 +27,15 @@
       <rect x="330" y="50" width="150" height="60" />
       <!-- Rectangle svg element with color -->
       <rect x="330" y="300" width="150" height="60" fill="red" />
+
+      <!-- The group element allows you to apply things to all elements within the svg element -->
+      <!-- The transform attribute with translate function allows you to move the whole group relatively -->
+      <!-- Fill colors the whole group -->
+      <g transform="translate(170, 0)" fill="green">
+        <rect x="330" y="50" width="150" height="60" />
+        <circle cx="400" cy="200" r="80"></circle>
+        <rect x="330" y="300" width="150" height="60" fill="green" />
+      </g>
     </svg>
   </body>
 </html>
