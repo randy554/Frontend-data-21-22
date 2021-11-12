@@ -13,3 +13,7 @@ rect:hover {
 .axis {
   font-size: smaller;
 }
+
+h1 span {
+  text-decoration: underline;
+}
