@@ -7,7 +7,7 @@ import {
 
 // Set API endpoint parameters
 let apiKey = "d08928de0d5d4809aef8375899851622";
-let phrases = "Ronaldo";
+let phrases = "Corona";
 let language = "nl";
 let sortBy = "relevancy";
 let pageSize = 100;
