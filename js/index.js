@@ -41,7 +41,7 @@ let data;
 
 // Scales setup
 const xscale = d3.scaleLinear().range([0, width]);
-const yscale = d3.scaleBand().rangeRound([0, height]).paddingInner(0.1);
+const yscale = d3.scaleBand().rangeRound([0, height]).paddingInner(0.4);
 
 // Axis setup
 const xaxis = d3.axisTop().scale(xscale);
