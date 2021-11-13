@@ -63,7 +63,11 @@ d3.json(allNewsEndPoint).then((json) => {
   let newList = listByOccurrenceCount(capFirstL);
   console.log("List by source:", newList);
 
-  update(newList);
+  data = newList;
+
+  console.log("Wat is data nu dan?", data);
+
+  update(data);
 });
 
 function update(new_data) {
@@ -108,14 +112,57 @@ function update(new_data) {
 }
 
 //interactivity
-d3.select("#filter-us-only").on("change", function () {
+// When filtered only show national articles
+d3.select("#binnenland").on("change", function () {
   // This will be triggered when the user selects or unselects the checkbox
   const checked = d3.select(this).property("checked");
   if (checked === true) {
     // Checkbox was just checked
 
     // Keep only data element whose country is US
-    const filtered_data = data.filter((d) => d.location.country === "US");
+    // const filtered_data = data.filter(
+    //   (d) => d.sourceName.includes(".nl") == d.sourceName
+    // );
+    const filtered_data = data.filter((d) => {
+      if (
+        d.sourceName.includes(".nl") ||
+        d.sourceName.includes("Tweakers") ||
+        d.sourceName.includes("RTL Nieuws")
+      ) {
+        return d.sourceName;
+      }
+    });
+
+    update(filtered_data); // Update the chart with the filtered data
+  } else {
+    // Checkbox was just unchecked
+    update(data); // Update the chart with all the data we have
+  }
+});
+
+//interactivity
+// When filtered only show international articles
+d3.select("#buitenland").on("change", function () {
+  // This will be triggered when the user selects or unselects the checkbox
+  const checked = d3.select(this).property("checked");
+  if (checked === true) {
+    // Checkbox was just checked
+
+    // Keep only data element whose country is US
+    // const filtered_data = data.filter(
+    //   (d) => d.sourceName.includes(".nl") == d.sourceName
+    // );
+    const filtered_data = data.filter((d) => {
+      if (
+        !(
+          d.sourceName.includes(".nl") ||
+          d.sourceName.includes("Tweakers") ||
+          d.sourceName.includes("RTL Nieuws")
+        )
+      ) {
+        return d.sourceName;
+      }
+    });
 
     update(filtered_data); // Update the chart with the filtered data
   } else {
