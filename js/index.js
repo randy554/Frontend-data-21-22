@@ -42,6 +42,7 @@ let data;
 // Scales setup
 const xscale = d3.scaleLinear().range([0, width]);
 const yscale = d3.scaleBand().rangeRound([0, height]).paddingInner(0.1);
+const color = d3.scaleOrdinal().range(d3.schemePaired);
 
 // Axis setup
 const xaxis = d3.axisTop().scale(xscale);
@@ -90,6 +91,7 @@ function update(new_data) {
       (enter) => {
         const rect_enter = enter.append("rect").attr("x", 0);
         rect_enter.append("title");
+        rect_enter.style("fill", (d) => color(d));
         return rect_enter;
       },
       // UPDATE
