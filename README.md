@@ -147,6 +147,7 @@ This website allows u to see the number of corona-related articles that have bee
  - [D3 in Depth](https://www.d3indepth.com/)
  - [D3 Tutorial from Samuel Gratzl](https://github.com/sgratzl/d3tutorial)
  - [Carbon source code images](https://carbon.now.sh/) 
+ - [Gyazo gif maker](https://gyazo.com/captures)
  - [Postimage](https://postimages.org/)
  - [News API](https://newsapi.org/docs/endpoints/everything#sources)
  - [SVG Tutorial from Curran Kelleher](https://www.youtube.com/watch?v=ysG9j4_Uw_g)
