@@ -4,7 +4,11 @@ During this course topics such as **functional programming**, **cleaning data** 
 
  ## Concept
  
- ### [Live demo]()
+ ### [Live demo](https://randy554.github.io/Frontend-data-21-22/)
+ 
+ [![concept-with-hover.gif](https://i.postimg.cc/ZR6TQWGT/concept-with-hover.gif)](https://postimg.cc/vgHFgZ8j)
+ 
+ [![concept-with-filter.gif](https://i.postimg.cc/vTQdS37z/concept-with-filter.gif)](https://postimg.cc/G8SN4P58)
  
  ## API
  
