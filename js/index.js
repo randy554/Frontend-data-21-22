@@ -130,7 +130,7 @@ function addLegend(new_data) {
 
 //interactivity
 // When filtered only show national articles
-d3.select("#binnenland").on("change", function () {
+d3.select("#netherlands").on("change", function () {
   // This will be triggered when the user selects or unselects the checkbox
   const checked = d3.select(this).property("checked");
   if (checked === true) {
@@ -156,7 +156,7 @@ d3.select("#binnenland").on("change", function () {
 
 //interactivity
 // When filtered only show international articles
-d3.select("#buitenland").on("change", function () {
+d3.select("#international").on("change", function () {
   // This will be triggered when the user selects or unselects the checkbox
   const checked = d3.select(this).property("checked");
   if (checked === true) {
