@@ -64,6 +64,7 @@ During this course topics such as **functional programming**, **cleaning data** 
 
  ## Concept
  
+ 
  #### [Live demo](https://randy554.github.io/Frontend-data-21-22/)
  
 This website allows u to see the number of corona-related articles that have been published by media outlets in recent times. The data is shown through a proportional area chart.
@@ -78,7 +79,19 @@ This website allows u to see the number of corona-related articles that have bee
  
  [![concept-with-filter.gif](https://i.postimg.cc/vTQdS37z/concept-with-filter.gif)](https://postimg.cc/G8SN4P58)
  
-
+ ## Table of Contents
+ 
+ - [Frontend Data](#frontend-data)
+  * [Assignment](#assignment)
+  * [Concept](#concept)
+  * [[Live demo]](#-live-demo--https---randy554githubio-frontend-data-21-22--)
+  * [Table of Contents](#table-of-contents)
+  * [API](#api)
+  * [Install](#install)
+  * [Credits](#credits)
+  * [Sources](#sources)
+  * [License](#license)
+ 
  
  ## API
  
@@ -132,8 +145,13 @@ This website allows u to see the number of corona-related articles that have bee
 
  
 ## Sources
+ - [D3](https://d3js.org/)
+ - [D3 in Depth](https://www.d3indepth.com/)
+ - [D3 Tutorial from Samuel Gratzl](https://github.com/sgratzl/d3tutorial)
  - [Carbon source code images](https://carbon.now.sh/) 
  - [Postimage](https://postimages.org/)
+ - [News API](https://newsapi.org/docs/endpoints/everything#sources)
+ - [SVG Tutorial from Curran Kelleher](https://www.youtube.com/watch?v=ysG9j4_Uw_g)
 
  
 ## License
