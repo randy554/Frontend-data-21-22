@@ -13,18 +13,8 @@ let pageSize = 100;
 let page = 1;
 let allNewsEndPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
-// Used margin object & update function as base @https://github.com/sgratzl/d3tutorial/blob/main/examples/barchart04_scale.html
-const margin = { top: 40, bottom: 10, left: 120, right: 20 };
-const width = 960 - margin.left - margin.right;
-const height = 600 - margin.top - margin.bottom;
-
 // Creates sources <svg> element
-const svg = d3
-  .select("body")
-  .append("svg")
-  .style("border", "1px solid lightgrey")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom);
+const svg = d3.select("body").append("svg");
 
 // Group used to enforce margin
 const g = svg.append("g").attr("transform", `translate(20,200)`);
@@ -60,6 +50,7 @@ d3.json(
   addLegend(data);
 });
 
+// Used update function as base @https://github.com/sgratzl/d3tutorial/blob/main/examples/barchart04_scale.html
 function update(new_data) {
   //update the scales
   xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
