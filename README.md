@@ -8,6 +8,8 @@ During this course topics such as **functional programming**, **cleaning data** 
  
  [![concept-with-hover.gif](https://i.postimg.cc/ZR6TQWGT/concept-with-hover.gif)](https://postimg.cc/vgHFgZ8j)
  
+ [![concept-with-hover-cut.gif](https://i.postimg.cc/rmLYxdnW/concept-with-hover-cut.gif)](https://postimg.cc/JyPqWhW4)
+ 
  [![concept-with-filter.gif](https://i.postimg.cc/vTQdS37z/concept-with-filter.gif)](https://postimg.cc/G8SN4P58)
  
  See the number of corona articles that recently has been published by media outlets.
