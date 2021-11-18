@@ -61,7 +61,7 @@ d3.json(allNewsEndPoint).then((json) => {
   data = newList;
 
   update(data);
-  addFilter(data);
+  addLegend(data);
 });
 
 function update(new_data) {
@@ -116,7 +116,7 @@ function update(new_data) {
   // .attr("r", (d, i) => d.articleCount + 10 + i * 20);
 }
 
-function addFilter(new_data) {
+function addLegend(new_data) {
   //update the scales
   xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
   cscale.domain(new_data.map((d) => d.sourceName));
