@@ -35,22 +35,25 @@ let data;
 const cscale = d3.scaleOrdinal().range(d3.schemePaired);
 const xscale = d3.scaleBand().range([0, height]);
 
-d3.json(allNewsEndPoint).then((json) => {
+// API can't be called from online browser only local
+d3.json(
+  "https://raw.githubusercontent.com/randy554/Frontend-data-21-22/dev/js/newsAPI.json"
+).then((json) => {
   data = json;
 
-  // List with publishers name
-  let sourceL = getSourceFrmList(data.articles);
+  // // List with publishers name
+  // let sourceL = getSourceFrmList(data.articles);
 
-  // List with www. removed
-  let withoutW = removeWordFromValue(sourceL, "Www.", "");
+  // // List with www. removed
+  // let withoutW = removeWordFromValue(sourceL, "Www.", "");
 
-  // List with first letter capitalized
-  let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
+  // // List with first letter capitalized
+  // let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
 
-  // List with amount of corona articles per publisher
-  let newList = listByOccurrenceCount(capFirstL);
+  // // List with amount of corona articles per publisher
+  // let newList = listByOccurrenceCount(capFirstL);
 
-  data = newList;
+  // data = newList;
 
   update(data);
   addLegend(data);
@@ -60,6 +63,8 @@ function update(new_data) {
   //update the scales
   xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
   cscale.domain(new_data.map((d) => d.sourceName));
+
+  console.log(new_data);
 
   // Render the chart with new data
   // DATA JOIN use the key argument for ensurign that the same DOM element is bound to the same data-item
@@ -132,9 +137,6 @@ d3.select("#binnenland").on("change", function () {
     // Checkbox was just checked
 
     // Keep only data element whose country is US
-    // const filtered_data = data.filter(
-    //   (d) => d.sourceName.includes(".nl") == d.sourceName
-    // );
     const filtered_data = data.filter((d) => {
       if (
         d.sourceName.includes(".nl") ||
@@ -161,9 +163,6 @@ d3.select("#buitenland").on("change", function () {
     // Checkbox was just checked
 
     // Keep only data element whose country is US
-    // const filtered_data = data.filter(
-    //   (d) => d.sourceName.includes(".nl") == d.sourceName
-    // );
     const filtered_data = data.filter((d) => {
       if (
         !(
