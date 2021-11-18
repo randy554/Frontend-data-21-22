@@ -1,7 +1,6 @@
 // Get source name from list
 let getSourceFrmList = (data) => {
   return data.map((article) => {
-    console.log("Source:", article.source.name);
     return article.source.name;
   });
 };

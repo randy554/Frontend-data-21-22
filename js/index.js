@@ -88,7 +88,9 @@ function update(new_data) {
 
           let circles = g
             .append("circle")
+            .transition()
             .attr("r", (d) => d.articleCount * 3)
+            .duration(1000)
             .style("fill", cscale);
 
           let text = g
@@ -101,7 +103,6 @@ function update(new_data) {
           let title = g
             .append("title")
             .text((d) => d.sourceName + " " + `(${d.articleCount})`);
-
           return enter;
         },
         // UPDATE
