@@ -27,7 +27,7 @@ This website allows u to see the number of corona-related articles that have bee
  
  In order to get news data I made use of the [NewsAPI](https://newsapi.org/). After creating a free account, u will receive a KEY to get started. The NewsAPI provides several endpoints for different purposes. For this project I'm making use of the [Everything endpoint](https://newsapi.org/docs/endpoints/everything). This endpoint returns a extensive list of articles from more than 80.000 large and small news sources and blogs. 
  
- ### Everything endpoitn:
+ ### Everything endpoint:
  
  ```Javascript
  `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`
@@ -62,8 +62,19 @@ This website allows u to see the number of corona-related articles that have bee
 ### 3. Open index.html & view site
 
     http://localhost:3001/
+    
+## Credits
+
+### Lecturers/coaches
+- [Vincent Vijn](https://github.com/vijnv)
+- [Robert Spier](https://github.com/roberrrt-s)
+- [Suwigya Rathore](https://github.com/suwigyarathore)
+
+### Team 3
+ - All official and non-official😉 members of **Team 3**
+
  
-  ## Sources
+## Sources
  - [Carbon source code images](https://carbon.now.sh/) 
  - [Postimage](https://postimages.org/)
 
