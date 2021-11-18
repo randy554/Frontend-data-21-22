@@ -29,28 +29,31 @@ const svg = d3
 const g = svg.append("g").attr("transform", `translate(20,200)`);
 
 // Global variable for all data
-// let data;
+let data;
 
 // Scales setup
 const cscale = d3.scaleOrdinal().range(d3.schemePaired);
 const xscale = d3.scaleBand().range([0, height]);
 
-d3.json("newsAPI.json").then((json) => {
-  let data = json;
+// API can't be called from online browser only local
+d3.json(
+  "https://raw.githubusercontent.com/randy554/Frontend-data-21-22/dev/js/newsAPI.json"
+).then((json) => {
+  data = json;
 
-  // List with publishers name
-  let sourceL = getSourceFrmList(data.articles);
+  // // List with publishers name
+  // let sourceL = getSourceFrmList(data.articles);
 
-  // List with www. removed
-  let withoutW = removeWordFromValue(sourceL, "Www.", "");
+  // // List with www. removed
+  // let withoutW = removeWordFromValue(sourceL, "Www.", "");
 
-  // List with first letter capitalized
-  let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
+  // // List with first letter capitalized
+  // let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
 
-  // List with amount of corona articles per publisher
-  let newList = listByOccurrenceCount(capFirstL);
+  // // List with amount of corona articles per publisher
+  // let newList = listByOccurrenceCount(capFirstL);
 
-  data = newList;
+  // data = newList;
 
   update(data);
   addLegend(data);
