@@ -21,36 +21,30 @@ let oldApiEndpoint =
   "https://rawgit.com/sgratzl/d3tutorial/master/examples/weather.json";
 
 const margin = { top: 40, bottom: 10, left: 120, right: 20 };
-const width = 800 - margin.left - margin.right;
+const width = 960 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 
 // Creates sources <svg> element
 const svg = d3
   .select("body")
   .append("svg")
+  .style("border", "1px solid lightgrey")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom);
 
 // Group used to enforce margin
 const g = svg
   .append("g")
-  .attr("transform", `translate(${margin.left},${margin.top})`);
+  // .attr("width", 800)
+  // .attr("transform", `translate(${margin.left},${margin.top})`);
+  .attr("transform", `translate(20,200)`);
 
 // Global variable for all data
 let data;
 
 // Scales setup
-const xscale = d3.scaleLinear().range([0, width]);
-const yscale = d3.scaleBand().rangeRound([0, height]).paddingInner(0.1);
-const color = d3.scaleOrdinal().range(d3.schemePaired);
-
-// Axis setup
-const xaxis = d3.axisTop().scale(xscale);
-const g_xaxis = g.append("g").attr("class", "x axis");
-const yaxis = d3.axisLeft().scale(yscale);
-const g_yaxis = g.append("g").attr("class", "y axis");
-
-/////////////////////////
+const cscale = d3.scaleOrdinal().range(d3.schemePaired);
+const xscale = d3.scaleBand().range([0, height]);
 
 d3.json(allNewsEndPoint).then((json) => {
   data = json;
@@ -66,51 +60,87 @@ d3.json(allNewsEndPoint).then((json) => {
 
   data = newList;
 
-  console.log("Wat is data nu dan?", data);
-
   update(data);
+  addFilter(data);
 });
 
 function update(new_data) {
   //update the scales
   xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
-  yscale.domain(new_data.map((d) => d.sourceName));
-  //render the axis
-  g_xaxis.transition().call(xaxis);
-  g_yaxis.transition().call(yaxis);
+  cscale.domain(new_data.map((d) => d.sourceName));
 
   // Render the chart with new data
-
+  console.log("new_data", new_data);
   // DATA JOIN use the key argument for ensurign that the same DOM element is bound to the same data-item
-  const rect = g
-    .selectAll("rect")
-    .data(new_data, (d) => d.sourceName)
-    .join(
-      // ENTER
-      // new elements
-      (enter) => {
-        const rect_enter = enter.append("rect").attr("x", 0);
-        rect_enter.append("title");
-        rect_enter.style("fill", (d) => color(d));
-        return rect_enter;
-      },
-      // UPDATE
-      // update existing elements
-      (update) => update,
-      // EXIT
-      // elements that aren't associated with data
-      (exit) => exit.remove()
-    );
+  try {
+    const circles = g
+      .selectAll("g")
+      .data(new_data, (d) => d.sourceName)
+      .join(
+        // ENTER
+        // new elements
+        (enter) => {
+          let g = enter
+            .append("g")
+            // .attr("y", 100)
+            // .attr("x", (d) => d.articleCount * 20);
+            .attr("transform", (d, i) => `translate(${30 + i * 60},0)`);
 
-  // ENTER + UPDATE
-  // both old and new elements
-  rect
-    .transition()
-    .attr("height", yscale.bandwidth())
-    .attr("width", (d) => xscale(d.articleCount))
-    .attr("y", (d) => yscale(d.sourceName));
+          let circles = g
+            .append("circle")
+            .attr("r", (d) => d.articleCount * 3)
+            .style("fill", cscale);
 
-  rect.select("title").text((d) => d.sourceName);
+          let text = g
+            .append("text")
+            .text((d) => {
+              return d.sourceName;
+            })
+            .attr("y", (d) => d.articleCount * 5);
+
+          let title = g
+            .append("title")
+            .text((d) => d.sourceName + " " + `(${d.articleCount})`);
+
+          return enter;
+        },
+        // UPDATE
+        // update existing elements
+        (update) => update,
+        // EXIT
+        // elements that aren't associated with data
+        (exit) => exit.remove()
+      );
+  } catch (e) {}
+  // .transition()
+  // .attr("r", (d, i) => d.articleCount + 10 + i * 20);
+}
+
+function addFilter(new_data) {
+  //update the scales
+  xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
+  cscale.domain(new_data.map((d) => d.sourceName));
+
+  const legendLabel = d3.select("#legend");
+  legendLabel
+    .selectAll("div")
+    .data(new_data)
+    .join("div")
+    .attr("class", "legendBox")
+    .append("span")
+    .attr("class", "legendColor")
+    // .style("width", "20px")
+    // .style("height", "20px")
+    .style("background-color", cscale)
+    .append("span")
+    .attr("class", "legendText")
+    // .style("padding-left", "25px")
+    .text((d) => d.sourceName);
+
+  // .append("div");
+
+  // const textLabel = d3.select("#legend");
+  // textLabel.selectAll("div").data(new_data).join("div").append("div");
 }
 
 //interactivity
