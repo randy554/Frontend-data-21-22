@@ -49,3 +49,8 @@ h1 span {
 .filterText {
   margin: 5px;
 }
+
+circle:hover {
+  stroke: black;
+  stroke-width: 2;
+}
