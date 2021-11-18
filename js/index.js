@@ -9,16 +9,9 @@ import {
 let apiKey = "d08928de0d5d4809aef8375899851622";
 let phrases = "Corona";
 let language = "nl";
-let sortBy = "relevancy";
 let pageSize = 100;
 let page = 1;
-let fullDataset = [];
-let newsSource1 = "www.ad.nl";
-let newsSource2 = "telegraaf.nl";
 let allNewsEndPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
-let fromTwoSourcesEndPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&domains=${newsSource1},${newsSource2}&apiKey=${apiKey}`;
-let oldApiEndpoint =
-  "https://rawgit.com/sgratzl/d3tutorial/master/examples/weather.json";
 
 const margin = { top: 40, bottom: 10, left: 120, right: 20 };
 const width = 960 - margin.left - margin.right;
@@ -33,11 +26,7 @@ const svg = d3
   .attr("height", height + margin.top + margin.bottom);
 
 // Group used to enforce margin
-const g = svg
-  .append("g")
-  // .attr("width", 800)
-  // .attr("transform", `translate(${margin.left},${margin.top})`);
-  .attr("transform", `translate(20,200)`);
+const g = svg.append("g").attr("transform", `translate(20,200)`);
 
 // Global variable for all data
 let data;
@@ -49,14 +38,17 @@ const xscale = d3.scaleBand().range([0, height]);
 d3.json(allNewsEndPoint).then((json) => {
   data = json;
 
+  // List with publishers name
   let sourceL = getSourceFrmList(data.articles);
-  console.log("List with sources:", sourceL);
+
+  // List with www. removed
   let withoutW = removeWordFromValue(sourceL, "Www.", "");
-  console.log("List with wwww:", withoutW);
+
+  // List with first letter capitalized
   let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
-  console.log("List with first letter cap:", capFirstL);
+
+  // List with amount of corona articles per publisher
   let newList = listByOccurrenceCount(capFirstL);
-  console.log("List by source:", newList);
 
   data = newList;
 
@@ -70,7 +62,6 @@ function update(new_data) {
   cscale.domain(new_data.map((d) => d.sourceName));
 
   // Render the chart with new data
-  console.log("new_data", new_data);
   // DATA JOIN use the key argument for ensurign that the same DOM element is bound to the same data-item
   try {
     const circles = g
@@ -82,8 +73,6 @@ function update(new_data) {
         (enter) => {
           let g = enter
             .append("g")
-            // .attr("y", 100)
-            // .attr("x", (d) => d.articleCount * 20);
             .attr("transform", (d, i) => `translate(${30 + i * 60},0)`);
 
           let circles = g
@@ -113,8 +102,6 @@ function update(new_data) {
         (exit) => exit.remove()
       );
   } catch (e) {}
-  // .transition()
-  // .attr("r", (d, i) => d.articleCount + 10 + i * 20);
 }
 
 function addLegend(new_data) {
@@ -130,18 +117,10 @@ function addLegend(new_data) {
     .attr("class", "legendBox")
     .append("span")
     .attr("class", "legendColor")
-    // .style("width", "20px")
-    // .style("height", "20px")
     .style("background-color", cscale)
     .append("span")
     .attr("class", "legendText")
-    // .style("padding-left", "25px")
     .text((d) => d.sourceName);
-
-  // .append("div");
-
-  // const textLabel = d3.select("#legend");
-  // textLabel.selectAll("div").data(new_data).join("div").append("div");
 }
 
 //interactivity
