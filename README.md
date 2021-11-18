@@ -67,10 +67,9 @@ During this course topics such as **functional programming**, **cleaning data** 
  
  #### [Live demo](https://randy554.github.io/Frontend-data-21-22/)
  
-This website allows u to see the number of corona-related articles that have been published by media outlets in recent times. The data is shown through a proportional area chart.
+This website allows u to see the number of corona-related articles that have been published by media outlets in recent times. The data is shown through a proportional area chart. Some features:
 
 * Hover over the circles to see the number of published articles
-
 * Filter on local/foreign publishers
 
  
