@@ -13,6 +13,7 @@ let pageSize = 100;
 let page = 1;
 let allNewsEndPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
+// Used margin object & update function as base @https://github.com/sgratzl/d3tutorial/blob/main/examples/barchart04_scale.html
 const margin = { top: 40, bottom: 10, left: 120, right: 20 };
 const width = 960 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
@@ -33,7 +34,7 @@ let data;
 
 // Scales setup
 const cscale = d3.scaleOrdinal().range(d3.schemePaired);
-const xscale = d3.scaleBand().range([0, height]);
+const xscale = d3.scaleSqrt().range([0, 30]);
 
 // API can't be called from online browser only local
 d3.json(
@@ -83,7 +84,9 @@ function update(new_data) {
           let circles = g
             .append("circle")
             .transition()
-            .attr("r", (d) => d.articleCount * 3)
+            .attr("r", (d) => {
+              return xscale(d.articleCount * 3);
+            })
             .duration(1000)
             .style("fill", cscale);
 
@@ -111,7 +114,6 @@ function update(new_data) {
 
 function addLegend(new_data) {
   //update the scales
-  xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
   cscale.domain(new_data.map((d) => d.sourceName));
 
   const legendLabel = d3.select("#legend");
@@ -128,7 +130,8 @@ function addLegend(new_data) {
     .text((d) => d.sourceName);
 }
 
-//interactivity
+// Edited filters @ https://codepen.io/sgratzl/pen/JjjPPRQ
+
 // When filtered only show national articles
 d3.select("#netherlands").on("change", function () {
   // This will be triggered when the user selects or unselects the checkbox
@@ -154,7 +157,6 @@ d3.select("#netherlands").on("change", function () {
   }
 });
 
-//interactivity
 // When filtered only show international articles
 d3.select("#international").on("change", function () {
   // This will be triggered when the user selects or unselects the checkbox
