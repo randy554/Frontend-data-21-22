@@ -29,14 +29,14 @@ const svg = d3
 const g = svg.append("g").attr("transform", `translate(20,200)`);
 
 // Global variable for all data
-let data;
+// let data;
 
 // Scales setup
 const cscale = d3.scaleOrdinal().range(d3.schemePaired);
 const xscale = d3.scaleBand().range([0, height]);
 
-d3.json(allNewsEndPoint).then((json) => {
-  data = json;
+d3.json("newsAPI.json").then((json) => {
+  let data = json;
 
   // List with publishers name
   let sourceL = getSourceFrmList(data.articles);
@@ -60,6 +60,8 @@ function update(new_data) {
   //update the scales
   xscale.domain([0, d3.max(new_data, (d) => d.articleCount)]);
   cscale.domain(new_data.map((d) => d.sourceName));
+
+  console.log(new_data);
 
   // Render the chart with new data
   // DATA JOIN use the key argument for ensurign that the same DOM element is bound to the same data-item
@@ -132,9 +134,6 @@ d3.select("#binnenland").on("change", function () {
     // Checkbox was just checked
 
     // Keep only data element whose country is US
-    // const filtered_data = data.filter(
-    //   (d) => d.sourceName.includes(".nl") == d.sourceName
-    // );
     const filtered_data = data.filter((d) => {
       if (
         d.sourceName.includes(".nl") ||
@@ -161,9 +160,6 @@ d3.select("#buitenland").on("change", function () {
     // Checkbox was just checked
 
     // Keep only data element whose country is US
-    // const filtered_data = data.filter(
-    //   (d) => d.sourceName.includes(".nl") == d.sourceName
-    // );
     const filtered_data = data.filter((d) => {
       if (
         !(
