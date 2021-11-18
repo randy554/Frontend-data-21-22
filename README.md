@@ -81,7 +81,7 @@ This website allows u to see the number of corona-related articles that have bee
  
  ## Table of Contents
  
- - [Frontend Data](#frontend-data)
+  * [Frontend Data](#frontend-data)
   * [Assignment](#assignment)
   * [Concept](#concept)
   * [Live demo](#-live-demo--https---randy554githubio-frontend-data-21-22--)
