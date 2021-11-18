@@ -1,13 +1,56 @@
-* {
-  font-family: "Roboto", sans-serif;
-}
-
 body {
-  margin: 0;
-  overflow: hidden;
+  width: 960px;
+  margin: 5px auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+rect {
+  fill: steelblue;
+  fill-opacity: 0.8;
+}
+rect:hover {
+  fill-opacity: 1;
+}
+.axis {
+  font-size: smaller;
 }
 
-.line {
-  stroke: blue;
-  stroke-width: 3;
+h1 span {
+  text-decoration: underline;
+}
+
+#legend {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.legendBox {
+  margin: 2px 0;
+  /* margin: 6px 1px; */
+}
+
+.legendColor {
+  width: 10px;
+  height: 10px;
+  /* padding: 5px; */
+}
+
+.legendText {
+  background-color: white;
+  margin-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#filterGroup {
+  margin: 16px 0;
+}
+
+.filterText {
+  margin: 5px;
+}
+
+circle:hover {
+  stroke: black;
+  stroke-width: 2;
 }
