@@ -26,7 +26,7 @@ const update = (new_data) => {
             .append("circle")
             .transition()
             .attr("r", (d) => {
-              return xscale(d.articleCount * 3);
+              return xscale(d.articleCount);
             })
             .duration(1000)
             .style("fill", cscale);

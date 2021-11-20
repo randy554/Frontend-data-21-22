@@ -37,7 +37,7 @@ d3.json(
   // let newList = listByOccurrenceCount(capFirstL);
 
   // data = newList;
-  // console.log("difoefoihf");
+
   update(data);
   addLegend(data);
 });
