@@ -36,7 +36,7 @@ const update = (new_data) => {
             .text((d) => {
               return d.sourceName;
             })
-            .attr("y", (d) => d.articleCount * 5);
+            .attr("y", (d) => xscale(d.articleCount) + 20);
 
           let title = g
             .append("title")
