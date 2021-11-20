@@ -1,5 +1,5 @@
 const cscale = d3.scaleOrdinal().range(d3.schemePaired);
-const xscale = d3.scaleSqrt().range([0, 30]);
+const xscale = d3.scaleSqrt().range([0, 50]);
 
 // Creates sources <svg> element
 const svg = d3.select("body").append("svg");
