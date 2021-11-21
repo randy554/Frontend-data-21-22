@@ -1,5 +1,13 @@
 import { xscale, cscale, g, svg } from "./setup.js";
 
+// Center the text relatively to the circle based on string length
+const centerCircleText = (textLength) => {
+  let charlen = textLength;
+  let calc = charlen * 8.2;
+  let divd = calc / 2.46;
+  return -divd;
+};
+
 // Used update function as base @https://github.com/sgratzl/d3tutorial/blob/main/examples/barchart04_scale.html
 const update = (new_data) => {
   //update the scales
@@ -36,7 +44,8 @@ const update = (new_data) => {
             .text((d) => {
               return d.sourceName;
             })
-            .attr("y", (d) => xscale(d.articleCount) + 20);
+            .attr("y", (d) => xscale(d.articleCount) + 20)
+            .attr("x", (d) => centerCircleText(d.sourceName.length));
 
           let title = g
             .append("title")
