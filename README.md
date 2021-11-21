@@ -1,6 +1,6 @@
 # Frontend Data
 This is a repo for the course [Frontend data:](https://github.com/cmda-tt/course-21-22) `@CMD Hogeschool van Amsterdam`.
-During this course topics such as **functional programming**, **cleaning data** and creating **data visualisations** will be be addressed. Through the [Wiki](https://github.com/randy554/Frontend-data-21-22/wiki) I will share my progress and findings.
+During this course topics such as **functional programming**, **cleaning data** and creating **data visualizations** will be addressed. Through the [Wiki](https://github.com/randy554/Frontend-data-21-22/wiki), I will share my progress and findings.
 
  ## Assignment
  
